@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Expenses Tracker</title>
+  <style>
+    body {
+      background-color: rgb(202, 203, 255);
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      padding: 20px;
+    }
+
+    .container {
+      max-width: 800px;
+      margin: auto;
+      padding: 20px;
+      background-color: rgba(255, 255, 255, 0.1);
+      border-radius: 15px;
+    }
+
+    h1 {
+      text-align: center;
+      color: navy;
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      width: 100%;
+    }
+
+    label {
+      font-size: 16px;
+      color: rgb(17, 0, 94);
+      text-transform: capitalize;
+    }
+
+    input,
+    select {
+      padding: 12px;
+      border: 1px solid rgb(189, 193, 226);
+      border-radius: 10px;
+      outline: none;
+      font-size: 16px;
+    }
+
+    select {
+      background-color: white;
+    }
+
+    button[type="submit"] {
+      padding: 12px;
+      border: none;
+      border-radius: 10px;
+      background-color: rgb(22, 12, 112);
+      color: beige;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    button[type="submit"]:hover {
+      background-color: blue;
+    }
+
+    #balance {
+      margin-top: 20px;
+      font-weight: bold;
+      text-align: center;
+      font-size: 18px;
+      color: rgb(0, 0, 75);
+    }
+
+    .table-container {
+      overflow-x: auto;
+      margin-top: 20px;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      width: 100%;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      min-width: 600px;
+      font-family: 'Segoe UI', sans-serif;
+    }
+
+    th, td {
+      padding: 14px;
+      text-align: left;
+      border: 1px solid #ddd;
+    }
+
+    thead {
+      background-color: #0b0850;
+      color: white;
+    }
+
+    tbody {
+      background-color: #9a95ff;
+    }
+
+    .delete-btn {
+      background-color: red;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      padding: 6px 12px;
+      cursor: pointer;
+    }
+
+    .delete-btn:hover {
+      background-color: darkred;
+    }
+
+    @media (max-width: 600px) {
+      body {
+        padding: 10px;
+      }
+
+      .container {
+        padding: 10px;
+      }
+
+      button[type="submit"] {
+        width: 100%;
+      }
+
+      input,
+      select {
+        font-size: 14px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Expenses Tracker</h1>
+
+    <form id="transaction-form">
+      <label for="description">Description</label>
+      <input type="text" id="description" required />
+
+      <label for="amount">Amount</label>
+      <input type="number" id="amount" required />
+
+      <label for="type">Type</label>
+      <select id="type" required>
+        <option value="">Select Type</option>
+        <option value="income">Income</option>
+        <option value="expense">Expense</option>
+      </select>
+
+      <button type="submit">Add</button>
+    </form>
+
+    <div id="balance">Current money: 0 $</div>
+
+    <div class="table-container">
+      <table>
+        <thead>
+          <tr>
+            <th>Description</th>
+            <th>Amount</th>
+            <th>Type</th>
+            <th>Operation</th>
+          </tr>
+        </thead>
+        <tbody id="transaction-list">
+          <!-- Transactions will be inserted here -->
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+ <script src="script.js"></script>
+</body>
+</html>
